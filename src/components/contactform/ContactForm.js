@@ -1,4 +1,3 @@
-import { nanoid } from 'nanoid';
 import css from './ContactForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContacts } from 'redux/operations';
