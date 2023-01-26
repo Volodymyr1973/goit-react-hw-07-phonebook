@@ -1,7 +1,7 @@
 import { nanoid } from 'nanoid';
 import css from './ContactForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/contactSlice';
+import { addContacts } from 'redux/operations';
 import { useState } from 'react';
 import { getContacts } from 'redux/selectors';
 
@@ -30,9 +30,8 @@ export const ContactForm = () => {
   const handleSubmit = event => {
     event.preventDefault();
     const contact = {
-      id: nanoid(),
       name: name,
-      number: number,
+      phone: number,
     };
     const nameUser = name;
     const doubleContact = contacts.some(
@@ -43,7 +42,7 @@ export const ContactForm = () => {
       alert(`${name} is already in contacts`);
       reset();
       return;
-    } else dispatch(addContact(contact));;
+    } else dispatch(addContacts(contact));
     reset();
   };
 
@@ -54,7 +53,7 @@ export const ContactForm = () => {
   
   return (
     <div className={css.form__wrapper}>
-      <h1>Phonebook</h1>
+      <h1 className={css.form__title}>Phonebook</h1>
       <form className={css.form__body} onSubmit={handleSubmit}>
         <label className={css.form__name}>
           Name

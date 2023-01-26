@@ -15,7 +15,7 @@ export const Filter = () => {
   }
 
   return (
-    <>
+    <div className={css.filter__wrapper}>
       <label className={css.filter__label}>
         Find contacts by name
         <input
@@ -24,7 +24,7 @@ export const Filter = () => {
           onChange={handleChangeFilter}
         />
       </label>
-    </>
+    </div>
   );
 };
 

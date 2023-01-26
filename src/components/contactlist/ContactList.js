@@ -7,10 +7,12 @@ import { getContacts, getFilter } from 'redux/selectors';
 
 export const ContactList = () => {
   const contacts = useSelector(getContacts); 
-   const filter = useSelector(getFilter)
+   const filters = useSelector(getFilter)
+
+   console.log(contacts)
 
   const visibleContacts = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(filter.toLowerCase())
+    contact.name.toLowerCase().includes(filters.toLowerCase())
   );
 
 console.log(`contacts${visibleContacts}`)
@@ -18,8 +20,7 @@ console.log(`contacts${visibleContacts}`)
   return (
     <>
       <ul className={css.contact__list}>
-        {visibleContacts.length > 0 &&
-          visibleContacts.map(contact => (
+        {visibleContacts.map(contact => (
             <ContactItem
               contact={contact}
             
